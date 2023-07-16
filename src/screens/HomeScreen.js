@@ -7,7 +7,7 @@ const HomeScreen = (props) => {
 
     const getWeather = async () => {
 
-        const APIKey = '41c1957da326302055c726cc7da9564c';
+        const APIKey = process.env.REACT_APP_API_KEY;
         const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=metric`;
 
 
