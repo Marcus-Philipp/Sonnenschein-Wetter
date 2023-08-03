@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import getEnVars from '../../constants';
 
 const HomeScreen = (props) => {
     const [city, setCity] = useState('');
 
     const getWeather = async () => {
 
-        const APIKey = process.env.REACT_APP_API_KEY;
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=metric`;
-
+        const { REACT_APP_API_KEY } = getEnVars();
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`;
 
         try {
             const response = await fetch(url);
@@ -23,8 +23,8 @@ const HomeScreen = (props) => {
 
     return (
         <LinearGradient
-        style={styles.gradientBack}
-        colors={['#0099DD', '#00ABBD']}
+            style={styles.gradientBack}
+            colors={['#0099DD', '#00ABBD']}
         >
             <StatusBar hidden={false} backgroundColor='#0099DD' />
             <View style={styles.container}>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff40'
     },
     textButton: {
-       fontWeight: 'bold',
+        fontWeight: 'bold',
     }
 });
 
